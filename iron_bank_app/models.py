@@ -9,6 +9,9 @@ class AccountNumber(models.Model):
     nickname = models.CharField(max_length=30)
     created_time = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return "{} {}".format(self.user, self.nickname)
+
     class Meta:
         ordering = ['-created_time']
 
@@ -29,3 +32,5 @@ class Transfer(models.Model):
 
     class Meta:
         ordering = ['-transfer_time']
+
+

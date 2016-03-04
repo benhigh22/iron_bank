@@ -1,8 +1,32 @@
-{% extends 'base.html' %}
-{% block title %}Home{% endblock %}
-
-{% block content %}
-<h1>The Iron Bank</h1>
-
-
-{% endblock %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+    <title>Home Page</title>
+</head>
+<body class="background">
+<div class="container">
+<nav class="navbar navbar-default navbar-fixed-top">
+      {% if user.is_authenticated %}
+    <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'logout' %}">Logout</a></button>
+    <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'index' %}">Home</a></button>
+    <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'account_number_list' %}">Your Accounts</a></button>
+    <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'create_account' %}">Create New Account</a></button>
+    <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'trans_list_view' %}">Your Transactions</a></button>
+    <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'transfer_list' %}">Your Transfers</a></button>
+      {% else %}
+    <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'login' %}">Login</a></button>
+    <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'signup' %}">Sign Up</a></button>
+    <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'index' %}">Home</a></button>
+      {% endif %}
+</nav>
+    <br><br><br><br>
+<h1 class="main_header">Welcome to the Iron Bank</h1>
+</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</html>

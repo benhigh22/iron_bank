@@ -2,16 +2,12 @@
 {% block title %}Transaction List{% endblock %}
 
 {% block content %}
+    <h2>Transactions (click one for more details)</h2>
 <table class="table">
-          <tr><th>Transaction Type</th>
-              <th>Amount</th>
-          <th>Description</th>
-          <th>Date and Time Created</th></tr>
+        <tr><th>Transaction Type</th><th>Amount</th>
     {% for transaction in object_list %}
-        <tr><td>{{ transaction.get_trans_type_display }}</td>
-        <td>{{ transaction.amount }}</td>
-        <td>{{ transaction.description }}</td>
-        <td>{{ transaction.time_created }}</td></tr>
+        <tr><td><a href="{% url 'transaction_detail_view' transaction.id %}">{{ transaction.get_trans_type_display }}</a></td>
+        <td><a href="{% url 'transaction_detail_view' transaction.id %}">{{ transaction.amount }}</a></td></tr>
     {% endfor %}
 </table>
 {% endblock %}

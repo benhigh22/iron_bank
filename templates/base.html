@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +16,7 @@
     <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'account_number_list' %}">Your Accounts</a></button>
     <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'create_account' %}">Create New Account</a></button>
     <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'trans_list_view' %}">Your Transactions</a></button>
+    <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'transfer_list' %}">Your Transfers</a></button>
       {% else %}
     <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'login' %}">Login</a></button>
     <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'signup' %}">Sign Up</a></button>

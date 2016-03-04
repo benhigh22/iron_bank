@@ -1,24 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-   <h5>Account Details</h5>
-   <table class="highlight">
-       <thead>
-         <tr>
-             <th data-field="id">Account Number</th>
+   <h2>Account Details</h2>
+   <table class="table">
+         <tr><th data-field="id">Account Number</th>
              <th data-field="balance">Balance</th>
              <th data-field="user">User</th>
-             <th data-field="Created">Date/Time Created</th>
-         </tr>
-       </thead>
-       <tbody>
-         <tr>
-           <td>{{ object.id }}</td>
+             <th data-field="Created">Date/Time Created</th></tr>
+           <tr><td>{{ object.id }}</td>
            <td>$ {{ object.balance }}</td>
            <td>{{ object.user }}</td>
-           <td>{{ object.created_time }}</td>
-       </tbody>
-     </table>
-   <a href="{% url 'trans_create_view' object.id %}" class="waves-effect waves-light btn blue-grey">Create Transaction</a>
-
+           <td>{{ object.created_time }}</td></tr>
+   </table>
+    <br><br>
+   <a href="{% url 'trans_create_view' object.id %}" class="btn btn-primary btn-lg" role="button">Create Transaction</a>
+   <a href="{% url 'transfer_view' object.id %}" class="btn btn-primary btn-lg" role="button">Create Transfer</a>
 {% endblock %}

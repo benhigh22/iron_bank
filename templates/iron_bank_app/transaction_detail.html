@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Transaction Detail{% endblock %}
+
+{% block content %}
+
+<h2>Transaction Details</h2>
+   <table class="table">
+         <tr><th>Transaction Type</th>
+          <th>Amount</th><th>Description</th>
+          <th>Date and Time Created</th></tr>
+           <tr><td>{{ object.get_trans_type_display }}</td>
+               <td>{{ object.amount }}</td>
+               <td>{{ object.description }}</td>
+               <td>{{ object.time_created }}</td></tr>
+   </table>
+    <br><br>
+   <a href="{% url 'trans_create_view' object.id %}" class="btn btn-primary btn-lg" role="button">Create Transaction</a>
+
+{% endblock %}

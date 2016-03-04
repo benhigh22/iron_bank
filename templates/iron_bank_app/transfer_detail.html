@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Transfer Detail{% endblock %}
+
+{% block content %}
+<h2>Transfer Details</h2>
+   <table class="table">
+         <tr><th>Account</th><th>Amount</th>
+          <th>Date/Time Created</th></tr>
+           <tr><td>{{ object.account }}</td>
+               <td>{{ object.amount }}</td>
+               <td>{{ object.time_created }}</td></tr>
+   </table>
+    <br><br>
+   <a href="{% url 'transfer_list_view %}" class="btn btn-primary btn-lg" role="button">Create Transfer</a>
+
+{% endblock %}

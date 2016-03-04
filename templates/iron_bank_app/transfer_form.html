@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load bootstrap_tags %}
+{% block title %}Transfers{% endblock %}
+
+{% block content %}
+Welcome {{ request.user }}
+<h3>Create a New Transfer </h3>
+<form action="" method="post">
+   {% csrf_token %}
+   {{ form | as_bootstrap }}
+   <button class="btn btn-primary" type="submit" name="action">Create</button>
+</form>
+
+
+{% endblock %}
