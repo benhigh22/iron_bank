@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
-
+{% load bootstrap_tags %}
 {% block content %}
 
    <h3>Create a New Transaction </h3>
    <form action="" method="post">
        {% csrf_token %}
-       {{ form.as_p }}
+       {{ form | as_bootstrap }}
        <button class="btn btn-primary" type="submit" name="action">Create</button>
    </form>
 

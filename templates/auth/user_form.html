@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load bootstrap_tags %}
 {% block title %}Sign Up{% endblock %}
 
 {% block content %}
@@ -8,7 +8,7 @@
 <form action="" method="post">
 {% csrf_token %}
 
-{{ form.as_p }}
+{{ form | as_bootstrap }}
 <button class="btn btn-primary" type="submit" name="action">Sign Up!
 </button>
 </form>

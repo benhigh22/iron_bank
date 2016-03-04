@@ -27,7 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'iron_bank_app'
+    'iron_bank_app',
+    'django_forms_bootstrap'
 ]
 
 MIDDLEWARE_CLASSES = [

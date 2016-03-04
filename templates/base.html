@@ -12,7 +12,7 @@
       {% if user.is_authenticated %}
     <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'logout' %}">Logout</a></button>
     <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'index' %}">Home</a></button>
-    <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'account_number_list' %}">Accounts</a></button>
+    <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'account_number_list' %}">Your Accounts</a></button>
     <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'create_account' %}">Create New Account</a></button>
     <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'trans_list_view' %}">Your Transactions</a></button>
       {% else %}
