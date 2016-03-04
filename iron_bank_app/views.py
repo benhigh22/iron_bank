@@ -43,8 +43,8 @@ class AccountNumberList(LimitedAccessMixin, ListView):
     model = AccountNumber
 
 
-class TransListView(LimitedAccessMixin, ListView):
-    model = Transaction
+class AccountDetailView(LimitedAccessMixin, DetailView):
+    model = AccountNumber
 
 
 class TransCreateView(CreateView):
@@ -71,6 +71,5 @@ class TransCreateView(CreateView):
         return reverse("trans_list_view")
 
 
-class AccountDetailView(LimitedAccessMixin, DetailView):
-    model = AccountNumber
-
+class TransactionListView(ListView):
+    model = Transaction

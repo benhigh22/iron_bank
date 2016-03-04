@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {{ request.user }}
-   <h5>Create a Transaction for Account: {{ tansaction.pk }}</h5>
+
+   <h3>Create a New Transaction </h3>
    <form action="" method="post">
        {% csrf_token %}
        {{ form.as_p }}
-       <button class="btn btn-primary" type="submit" name="action">Create
-
-       </button>
+       <button class="btn btn-primary" type="submit" name="action">Create</button>
    </form>
+
 {% endblock %}
