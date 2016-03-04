@@ -1,3 +1,4 @@
+from datetime import timedelta, date
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
@@ -73,3 +74,8 @@ class TransCreateView(CreateView):
 
 class TransactionListView(ListView):
     model = Transaction
+
+    """def get_queryset(self):
+        startdate = date.today()
+        enddate = startdate + timedelta(days=30)
+        return Transaction.objects.filter(date__range=[startdate, enddate])"""
