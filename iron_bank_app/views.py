@@ -92,7 +92,9 @@ class TransferCreateView(CreateView):
     def form_valid(self, form):
         form_object = form.save(commit=False)
         acct_num_from = AccountNumber.objects.get(pk=self.kwargs['pk'])
-        if acct_num_from == AccountNumber:
+        if form_object.account == acct_num_from:
+            return HttpResponseRedirect('/overdraft')
+        else:
             new_balance_from = acct_num_from.balance - form_object.amount
             new_balance_to = form_object.account.balance + form_object.amount
             if new_balance_from < 0:
@@ -106,8 +108,6 @@ class TransferCreateView(CreateView):
                 AccountNumber.objects.filter(pk=form_object.account.id).update(balance=new_balance_to)
                 form_object.save()
                 return super().form_valid(form)
-        else:
-            return HttpResponseRedirect('/overdraft')
 
     def get_success_url(self):
         return reverse("account_number_list")

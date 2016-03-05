@@ -7,7 +7,7 @@
           <th>Account</th>
           <th>Date and Time Created</th></tr>
     {% for transfer in object_list %}
-        <tr><td>{{ transfer.amount }}</td>
+        <tr><td><a href="{% url 'transfer_detail' transfer.id %}">{{ transfer.amount }}</a></td>
         <td>{{ transfer.account }}</td>
         <td>{{ transfer.transfer_time }}</td></tr>
     {% endfor %}
