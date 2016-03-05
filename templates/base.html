@@ -1,29 +1,31 @@
-
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="{% static 'base_style.css' %}" rel="stylesheet">
     <title>{% block title %}{% endblock %}</title>
 </head>
-<body>
-
+<body class="background">
 <div class="container">
-<nav class="navbar navbar-default navbar-fixed-top">
+<ul class="nav nav-pills">
       {% if user.is_authenticated %}
-    <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'logout' %}">Logout</a></button>
-    <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'index' %}">Home</a></button>
-    <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'account_number_list' %}">Your Accounts</a></button>
-    <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'create_account' %}">Create New Account</a></button>
-    <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'trans_list_view' %}">Your Transactions</a></button>
-    <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'transfer_list' %}">Your Transfers</a></button>
+    <li role="presentation"><a href="{% url 'logout' %}">Logout</a></li>
+    <li role="presentation"><a href="{% url 'index' %}">Home</a></li>
+    <li role="presentation"><a href="{% url 'account_number_list' %}">Your Accounts</a></li>
+    <li role="presentation"><a href="{% url 'create_account' %}">Create New Account</a></li>
+    <li role="presentation"><a href="{% url 'trans_list_view' %}">Your Transactions</a></li>
+    <li role="presentation"><a href="{% url 'transfer_list' %}">Your Transfers</a></li>
       {% else %}
-    <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'login' %}">Login</a></button>
-    <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'signup' %}">Sign Up</a></button>
-    <button type="button" class="btn btn-default navbar-btn"><a href="{% url 'index' %}">Home</a></button>
+    <li role="presentation"><a href="{% url 'login' %}">Login</a></li>
+    <li role="presentation"><a href="{% url 'signup' %}">Sign Up</a></li>
+    <li role="presentation" class="active"><a href="{% url 'index' %}">Home</a></li>
       {% endif %}
-</nav>
+</ul>
+
     <br><br><br>
+
 {% block content %}
 {% endblock %}
 </div>

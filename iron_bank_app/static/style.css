@@ -3,7 +3,12 @@
 }
 
 .main_header {
+    color: black;
     text-align: center;
     font-family: Zapfino;
-    color: whitesmoke;
+    border: medium;
 }
+
+
+
+
