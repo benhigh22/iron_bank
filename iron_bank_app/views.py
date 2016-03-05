@@ -92,20 +92,25 @@ class TransferCreateView(CreateView):
     def form_valid(self, form):
         form_object = form.save(commit=False)
         acct_num_from = AccountNumber.objects.get(pk=self.kwargs['pk'])
-        new_balance_from = acct_num_from.balance - form_object.amount
-        new_balance_to = form_object.account.balance + form_object.amount
-        if new_balance_from <0:
-           return HttpResponseRedirect('/overdraft')
-        elif new_balance_to < 0:
-           return HttpResponseRedirect('/overdraft')
+        if acct_num_from == AccountNumber:
+            new_balance_from = acct_num_from.balance - form_object.amount
+            new_balance_to = form_object.account.balance + form_object.amount
+            if new_balance_from < 0:
+                return HttpResponseRedirect('/overdraft')
+            elif new_balance_to < 0:
+                return HttpResponseRedirect('/overdraft')
+            elif acct_num_from == Transfer.account:
+                return HttpResponseRedirect('/overdraft')
+            else:
+                AccountNumber.objects.filter(pk=self.kwargs['pk']).update(balance=new_balance_from)
+                AccountNumber.objects.filter(pk=form_object.account.id).update(balance=new_balance_to)
+                form_object.save()
+                return super().form_valid(form)
         else:
-           AccountNumber.objects.filter(pk=self.kwargs['pk']).update(balance=new_balance_from)
-           AccountNumber.objects.filter(pk=form_object.account.id).update(balance=new_balance_to)
-           form_object.save()
-           return super().form_valid(form)
+            return HttpResponseRedirect('/overdraft')
 
     def get_success_url(self):
-        return reverse("transfer_detail_view")
+        return reverse("account_number_list")
 
 
 class TransferListView(ListView):
