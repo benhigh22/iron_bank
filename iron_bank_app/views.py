@@ -1,4 +1,6 @@
-from datetime import timedelta, date
+from datetime import timedelta, date, datetime
+
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
@@ -80,8 +82,14 @@ class OverdraftView(TemplateView):
 class TransactionListView(ListView):
     model = Transaction
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        range_30 = datetime.today() - timedelta(days=30)
+        context["object"]=Transaction.objects.filter(time_created__gt=range_30)
+        return context
 
-class TransactionDetailView(DetailView):
+
+class TransactionDetailView(LoginRequiredMixin, DetailView):
     model = Transaction
 
 
@@ -120,5 +128,5 @@ class TransferListView(ListView):
        return Transfer.objects.filter(account__user=self.request.user)
 
 
-class TransferDetailView(DetailView):
+class TransferDetailView(LoginRequiredMixin, DetailView):
     model = Transfer

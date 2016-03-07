@@ -20,11 +20,13 @@
       {% else %}
     <li role="presentation"><a href="{% url 'login' %}">Login</a></li>
     <li role="presentation"><a href="{% url 'signup' %}">Sign Up</a></li>
-    <li role="presentation" class="active"><a href="{% url 'index' %}">Home</a></li>
+    <li role="presentation"><a href="{% url 'index' %}">Home</a></li>
       {% endif %}
 </ul>
     <br><br><br><br>
-<h1 class="main_header">WELCOME TO THE IRON BANK</h1>
+<div class="well">
+<h1 class="main_header"><small>WELCOME TO</small> THE IRON BANK</h1>
+</div>
 </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

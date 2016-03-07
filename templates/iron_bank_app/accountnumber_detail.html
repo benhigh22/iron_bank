@@ -13,6 +13,6 @@
            <td>{{ object.created_time }}</td></tr>
    </table>
     <br><br>
-   <a href="{% url 'trans_create_view' object.id %}" class="btn btn-primary btn-lg" role="button">Create Transaction</a>
-   <a href="{% url 'transfer_view' object.id %}" class="btn btn-primary btn-lg" role="button">Create Transfer</a>
+   <a href="{% url 'trans_create_view' object.id %}" class="btn btn-primary btn-lg" role="button">Withdraw/Deposit</a>
+   <a href="{% url 'transfer_view' object.id %}" class="btn btn-primary btn-lg" role="button">Transfer Between Accounts</a>
 {% endblock %}

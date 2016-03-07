@@ -3,12 +3,13 @@
 }
 
 .main_header {
-    color: black;
+    font-weight: bolder;
+    color: gray;
+    text-emphasis: filled;
     text-align: center;
     font-family: Zapfino;
     border: medium;
 }
-
 
 
 
