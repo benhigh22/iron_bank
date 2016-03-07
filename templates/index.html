@@ -9,10 +9,13 @@
 </head>
 <body class="background">
 <div class="container">
+<br>
+<div class="well">
+<h3 class="main_header"><small>WELCOME TO</small> THE IRON BANK</h3>
+</div>
 <ul class="nav nav-pills nav-stacked">
       {% if user.is_authenticated %}
     <li role="presentation"><a href="{% url 'logout' %}">Logout</a></li>
-    <li role="presentation"><a href="{% url 'index' %}">Home</a></li>
     <li role="presentation"><a href="{% url 'account_number_list' %}">Your Accounts</a></li>
     <li role="presentation"><a href="{% url 'create_account' %}">Create New Account</a></li>
     <li role="presentation"><a href="{% url 'trans_list_view' %}">Your Transactions</a></li>
@@ -20,13 +23,8 @@
       {% else %}
     <li role="presentation"><a href="{% url 'login' %}">Login</a></li>
     <li role="presentation"><a href="{% url 'signup' %}">Sign Up</a></li>
-    <li role="presentation"><a href="{% url 'index' %}">Home</a></li>
       {% endif %}
 </ul>
-    <br><br><br><br>
-<div class="well">
-<h1 class="main_header"><small>WELCOME TO</small> THE IRON BANK</h1>
-</div>
 </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
