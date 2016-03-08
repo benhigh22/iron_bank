@@ -1,32 +1,35 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link href="{% static 'style.css' %}" rel="stylesheet">
-    <title>Home Page</title>
-</head>
-<body class="background">
-<div class="container">
-<br>
-<div class="well">
-<h3 class="main_header"><small>WELCOME TO</small> THE IRON BANK</h3>
-</div>
-<ul class="nav nav-pills nav-stacked">
-      {% if user.is_authenticated %}
-    <li role="presentation"><a href="{% url 'logout' %}">Logout</a></li>
-    <li role="presentation"><a href="{% url 'account_number_list' %}">Your Accounts</a></li>
-    <li role="presentation"><a href="{% url 'create_account' %}">Create New Account</a></li>
-    <li role="presentation"><a href="{% url 'trans_list_view' %}">Your Transactions</a></li>
-    <li role="presentation"><a href="{% url 'transfer_list' %}">Your Transfers</a></li>
-      {% else %}
-    <li role="presentation"><a href="{% url 'login' %}">Login</a></li>
-    <li role="presentation"><a href="{% url 'signup' %}">Sign Up</a></li>
-      {% endif %}
-</ul>
-</div>
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-</html>
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>Welcome to the Iron Bank</h1>
+    <br><br>
+<h2>Use the navigation bar above to add an account, make transactions, or
+transfer between accounts. For other questions or concerns, contact customer
+service.</h2>
+
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Customer Service</button>
+
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">For customer service and assistance:</h4>
+        </div>
+        <div class="modal-body">
+          <p>Phone: 1(800)IRN-BANK</p>
+          <p>Email: customerservice@theironbank.com</p>
+          <p>Thank You!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

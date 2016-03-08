@@ -1,4 +1,4 @@
-from datetime import timedelta, date, datetime
+from datetime import timedelta, datetime
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
@@ -87,6 +87,9 @@ class TransactionListView(ListView):
         range_30 = datetime.today() - timedelta(days=30)
         context["object"]=Transaction.objects.filter(time_created__gt=range_30)
         return context
+
+    def get_queryset(self):
+       return Transfer.objects.filter(account__user=self.request.user)
 
 
 class TransactionDetailView(LoginRequiredMixin, DetailView):
